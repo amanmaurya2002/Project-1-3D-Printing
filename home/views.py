@@ -9,6 +9,7 @@ def index(request):
 def about(request):
     return render(request , 'about.html')
 
+# Ask for user sign up details and save it in database.
 def user(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -19,6 +20,7 @@ def user(request):
         news.save()
     return render(request , 'user.html')
 
+# Ask for supplier information and save it in databse.
 def contact(request):
     if request.method == "POST":
         name = request.POST.get('name')
