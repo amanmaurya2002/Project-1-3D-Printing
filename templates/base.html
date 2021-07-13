@@ -22,17 +22,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/about">About Us</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/contact">Signup</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'user' %}">User Sign up</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/user">Signup user</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'supplier' %}">Supplier Sign up</a>
         </li>
       </ul>
     </div>
