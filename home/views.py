@@ -3,22 +3,23 @@ from datetime import datetime
 from home.models import Contact, Newuser
 
 # Create your views here.
+
 def index(request):
-    return render(request ,'index.html')
+    return render(request,'index.html')
 
 def about(request):
-    return render(request , 'about.html')
+    return render(request, 'about.html')
 
-# Ask for user sign up details and save it in database.
-def user(request):
+# Ask for user registration details and save it in database.
+def register(request):
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
         Pwd = request.POST.get('Pwd')
         
-        news = Newuser(name = name , email=email , Pwd=Pwd )
+        news = Newuser(name = name, email=email, Pwd=Pwd)
         news.save()
-    return render(request , 'user.html')
+    return render(request , 'register.html')
 
 # Ask for supplier information and save it in databse.
 def contact(request):
@@ -26,8 +27,8 @@ def contact(request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
-        contact = Contact(name = name , email=email , phone=phone, date=datetime.today())
+        contact = Contact(name = name, email=email, phone=phone, date=datetime.today())
         contact.save()
 
     
-    return render(request , 'contact.html')
+    return render(request, 'contact.html')

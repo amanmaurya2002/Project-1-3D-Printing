@@ -14,9 +14,3 @@ class Newuser(models.Model):
     name = models.CharField(max_length=120)
     email = models.CharField(max_length=130)
     Pwd = models.CharField(max_length=15)
-    
-    
-
-    
-
-
