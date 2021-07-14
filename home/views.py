@@ -1,4 +1,7 @@
-from django.shortcuts import render , HttpResponse
+from django.shortcuts import  render, redirect
+from .forms import NewUserForm
+from django.contrib.auth import login
+from django.contrib import messages
 from datetime import datetime
 from home.models import Contact, Newuser
 
@@ -13,13 +16,19 @@ def about(request):
 # Ask for user registration details and save it in database.
 def register(request):
     if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        Pwd = request.POST.get('Pwd')
-        
-        news = Newuser(name = name, email=email, Pwd=Pwd)
-        news.save()
-    return render(request , 'register.html')
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registration successful." )
+            return redirect("main:homepage")
+        messages.error(request, "Unsuccessful registration. Invalid information.")
+    form = NewUserForm()
+    return render (request=request, template_name="register.html", context={"register_form":form})
+
+# Verify credentialas and login user
+def login(request):
+    return render(request, 'login.html')
 
 # Ask for supplier information and save it in databse.
 def contact(request):
