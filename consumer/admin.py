@@ -1,7 +1,7 @@
 from django.contrib import admin
-from home.models import Newuser
+from consumer.models import Newuser
 
 # Register your models here.
-from home.models import Contact
+from consumer.models import Contact
 admin.site.register(Contact)
 admin.site.register(Newuser)
