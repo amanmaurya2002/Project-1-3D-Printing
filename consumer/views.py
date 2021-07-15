@@ -3,7 +3,6 @@ from .forms import NewUserForm
 from django.contrib.auth import login
 from django.contrib import messages
 from datetime import datetime
-from consumer.models import Contact, Newuser
 
 # Create your views here.
 
@@ -30,13 +29,3 @@ def register(request):
 def login(request):
     return render(request, 'consumer/login.html')
 
-# Ask for supplier information and save it in databse.
-def contact(request):
-    if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        contact = Contact(name = name, email=email, phone=phone, date=datetime.today())
-        contact.save()
-    
-    return render(request, 'consumer/contact.html')
