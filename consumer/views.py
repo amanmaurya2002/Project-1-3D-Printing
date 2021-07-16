@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm
+from .forms import NewUserForm, Part
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -52,4 +52,11 @@ def logout_request(request):
 
 # Lets user upload the model to print
 def print(request):
-    return render(request, "consumer/print.html")
+    if request.method == 'POST':
+        form = Part(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('print')
+    else:
+        form = Part()
+    return render(request, 'consumer/print.html', {'upload_form': form})

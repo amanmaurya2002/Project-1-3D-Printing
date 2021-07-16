@@ -18,3 +18,7 @@ class NewUserForm(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+
+class Part(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()
