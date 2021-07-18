@@ -1,0 +1,11 @@
+{% extends "get_print/base.html" %}
+
+{% block body %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{part_upload_form}}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

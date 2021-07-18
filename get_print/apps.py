@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class consumerConfig(AppConfig):
+class get_printConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'consumer'
+    name = 'get_print'
