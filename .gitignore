@@ -130,3 +130,6 @@ dmypy.json
 
 # Django app migrations
 migrations/
+
+# Django Files
+uploaded_parts/
