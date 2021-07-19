@@ -1,10 +1,12 @@
 {% extends 'get_print/base.html' %}
 
 {% block body %}
-
-    {% for part in parts %}
-        <ul>{{ part }}</ul>
-    {% endfor %}
+    <ul>
+        {% for part in parts %}
+        <li>{{ part }}</li>
+        {% endfor %}
+    </ul>
+    
 
     <a href="{% url 'upload_part' %}">Upload Part</a>
 
