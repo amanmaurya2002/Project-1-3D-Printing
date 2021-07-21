@@ -128,8 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Django app migrations
-migrations/
-
 # Django Files
 uploaded_parts/
