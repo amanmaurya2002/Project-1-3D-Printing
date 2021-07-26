@@ -4,7 +4,7 @@
     <ul>
         {% for part in parts %}
         <li>
-            <a href="{% url 'get_print:part' part.id %}">{{ part.name }}</a>
+            <a href="{% url 'get_print:part' part.id %}">{{ part }}</a>
         </li>
         {% endfor %}
     </ul>

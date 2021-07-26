@@ -1,9 +1,12 @@
 from django import forms
+from django.db import models
+from django.db.models import fields
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.html import TRAILING_PUNCTUATION_CHARS
 from .models import Part
+from project1.models import PrintSpecification
 
 
 # Create your forms here.
@@ -26,3 +29,8 @@ class PartUploadForm(ModelForm):
 # Form for uplading a part
 class UploadForm(forms.Form):
 	file = forms.FileField(required=True)
+
+class PrintSpecificationForm(ModelForm):
+	class Meta:
+		model = PrintSpecification
+		fields = ['technology', 'material', 'colour', 'infill']

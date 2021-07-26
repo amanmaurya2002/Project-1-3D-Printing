@@ -1,7 +1,12 @@
 {% extends 'get_print/base.html' %}
 
 {% block body %}
-    <h1>{{part.name}}</h1>
+    <h1>{{part_name}}</h1>
     <br>
-    <h1>Specifications</h1>
+    <h2>Specifications</h2>
+    <form action="{% url 'get_print:quotes' %}" method="POST">
+        {% csrf_token %}
+        {{ print_specification_form }}
+        <input type="submit" name='Get Quotes' value='Get Quotes'>
+    </form>
 {% endblock %}

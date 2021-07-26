@@ -1,0 +1,16 @@
+{% extends 'get_print/base.html' %}
+
+{% block body %}
+    {% if suppliers %}
+        <form action="{% url 'get_print:order_status' %}" method="GET">
+            {% csrf_token %}
+            {% for supplier in suppliers %}
+                <input type="radio" id='{{supplier.user.id}}' name='quote' value='{{supplier.user.id}}'>
+                <label for='{{supplier.user.id}}'>{{supplier.user.username}}</label>
+            {% endfor %}
+        </form>
+        <input type="submit" name="Place Order" value="Place Order">
+    {% else %}
+        <h1>No suppliers matched</h1>
+    {% endif %}
+{% endblock %}

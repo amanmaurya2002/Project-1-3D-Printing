@@ -35,3 +35,6 @@ class Supplier(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     printers = models.ManyToManyField(Printer, related_name='with_suppliers')
     materials = models.ManyToManyField(Material, related_name='with_suppliers')
+
+    def __str__(self):
+        return self.user.username

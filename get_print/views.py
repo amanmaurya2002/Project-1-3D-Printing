@@ -3,7 +3,9 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .forms import NewUserForm, PartUploadForm
+from .forms import NewUserForm, PartUploadForm, PrintSpecificationForm
+from .models import Part
+from project1.util import find_suppliers
 
 # Create your views here.
 
@@ -21,7 +23,7 @@ def register_request(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful." )
-            return redirect('workspace')
+            return redirect('get_print:workspace')
         messages.error(request, "Unsuccessful registration. Invalid information.")
     form = NewUserForm()
     return render (request=request, template_name="get_print/register.html", context={"register_form":form})
@@ -37,7 +39,7 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"You are now logged in as {username}.")
-				return redirect('workspace')
+				return redirect('get_print:workspace')
 			else:
 				messages.error(request,"Invalid username or password.")
 		else:
@@ -50,7 +52,7 @@ def login_request(request):
 def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
-	return redirect("home")
+	return redirect('get_print:home')
 
 # User's workspace: Parts, orders, history, profile.
 @login_required
@@ -71,13 +73,27 @@ def upload_part(request):
         if uploaded_part.is_valid():
             p = uploaded_part.save()
             request.user.customer.parts.add(p)
-            return redirect('parts')
+            return redirect('get_print:parts')
     form = PartUploadForm()
     return render(request, 'get_print/upload_part.html', {'part_upload_form': form})
 
+@login_required
 def orders(request):
     pass
 
-def part(request, id):
-    
-    pass
+@login_required
+def part(request, part_id):
+    part_name = Part.objects.get(id=part_id).part.name
+    form = PrintSpecificationForm()
+    return render(request, 'get_print/part.html', {'print_specification_form': form, 'part_name': part_name})
+
+@login_required
+def quotes(request):
+    specification = PrintSpecificationForm(request.POST).save()
+    suppliers = find_suppliers(specification)
+    return render(request, 'get_print/quotes.html', {'suppliers': suppliers})
+
+@login_required
+def order_status(request):
+    status = 'Order placed!'
+    return render(request, 'get_print/order_status.html', {'status': status})

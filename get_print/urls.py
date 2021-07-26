@@ -15,4 +15,6 @@ urlpatterns = [
     path('parts/<int:part_id>', views.part, name='part'),
     path('upload_part', views.upload_part, name='upload_part'),
     path('orders', views.orders, name='orders'),
+    path('quotes', views.quotes, name='quotes'),
+    path('order_status', views.order_status, name='order_status')
 ]
