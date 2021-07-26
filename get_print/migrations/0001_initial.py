@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Consumer',
+            name='Customer',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('parts', models.ManyToManyField(blank=True, to='get_print.Part')),

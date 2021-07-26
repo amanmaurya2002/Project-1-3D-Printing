@@ -4,7 +4,6 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .forms import NewUserForm, PartUploadForm
-from .util import *
 
 # Create your views here.
 
@@ -58,10 +57,10 @@ def logout_request(request):
 def workspace(request):
     return render(request, 'get_print/workspace.html')
 
-# Show all parts Consumer has uploaded
+# Show all parts Customer has uploaded
 @login_required
 def parts(request):
-    parts = request.user.consumer.parts.all()
+    parts = request.user.customer.parts.all()
     return render(request, 'get_print/parts.html', {'parts': parts})
 
 # Lets user upload the model to print
@@ -71,7 +70,14 @@ def upload_part(request):
         uploaded_part = PartUploadForm(request.POST, request.FILES)
         if uploaded_part.is_valid():
             p = uploaded_part.save()
-            request.user.consumer.parts.add(p)
+            request.user.customer.parts.add(p)
             return redirect('parts')
     form = PartUploadForm()
     return render(request, 'get_print/upload_part.html', {'part_upload_form': form})
+
+def orders(request):
+    pass
+
+def part(request, id):
+    
+    pass

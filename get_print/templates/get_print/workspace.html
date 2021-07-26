@@ -2,5 +2,6 @@
 
 {% block body %}
     <h1>Welcome, {{user}}</h1>
-    <a href="{% url 'parts' %}">Parts</a>
+    <a href="{% url 'get_print:parts' %}">Parts</a>
+    <a href="{% url 'get_print:orders' %}">Orders</a>
 {% endblock %}

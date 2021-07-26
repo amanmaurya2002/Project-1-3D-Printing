@@ -33,14 +33,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'project1',
     'get_print',
+    'give_print',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -55,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = '3dprint.urls'
+ROOT_URLCONF = 'project1.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = '3dprint.wsgi.application'
+WSGI_APPLICATION = 'project1.wsgi.application'
 
 
 # Database
@@ -82,7 +84,7 @@ WSGI_APPLICATION = '3dprint.wsgi.application'
 DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.mysql',
-        #'NAME' : '3dprint',
+        #'NAME' : 'project1',
         #'HOST' : 'localhost',
         #'USER' : 'root',
         #'PASSWORD' : '',

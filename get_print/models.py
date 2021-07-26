@@ -7,16 +7,22 @@ from django.dispatch import receiver
 
 # table for all parts
 class Part(models.Model):
-    part = models.FileField(upload_to="uploaded_parts")
+    part = models.FileField(upload_to='uploads')
+
+    def __str__(self):
+        return self.part.name
 
 # table for user data
-class Consumer(models.Model):
+class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    parts = models.ManyToManyField(Part, blank=True)
+    parts = models.ManyToManyField(Part, blank=True, related_name='uploaded_by')
+
+    def __str__(self):
+        return self.user.username
 
 @receiver(post_save, sender=User)
-def update_consumer(sender, instance, created, **kwargs):
+def update_customer(sender, instance, created, **kwargs):
     if created:
-        Consumer.objects.create(user=instance)
+        Customer.objects.create(user=instance)
     else:
-        instance.consumer.save()
+        instance.customer.save()

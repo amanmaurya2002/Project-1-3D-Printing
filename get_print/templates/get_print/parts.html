@@ -3,11 +3,13 @@
 {% block body %}
     <ul>
         {% for part in parts %}
-        <li>{{ part }}</li>
+        <li>
+            <a href="{% url 'get_print:part' part.id %}">{{ part.name }}</a>
+        </li>
         {% endfor %}
     </ul>
     
 
-    <a href="{% url 'upload_part' %}">Upload Part</a>
+    <a href="{% url 'get_print:upload_part' %}">Upload Part</a>
 
 {% endblock %}
