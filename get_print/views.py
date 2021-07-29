@@ -101,3 +101,7 @@ def order_status(request):
 @login_required
 def projects(request):
     return render('get_print/projects.html')
+
+@login_required
+def instant_quote(request):
+    pass
