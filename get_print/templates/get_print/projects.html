@@ -1,0 +1,15 @@
+{% extends 'get_print/base.html' %}
+
+{% block body %}
+    <ul>
+        {% for project in projects %}
+        <li>
+            <a href="{% url 'get_print:project' %}">{{ project }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    
+
+    <a href="{% url 'get_print:upload_part' %}">Upload Part</a>
+
+{% endblock %}

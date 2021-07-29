@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='printspecification',
-            name='technology',
-            field=models.ForeignKey(blank=True, on_delete=django.db.models.deletion.CASCADE, to='give_print.technology'),
+            name='process',
+            field=models.ForeignKey(blank=True, on_delete=django.db.models.deletion.CASCADE, to='give_print.process'),
         ),
     ]

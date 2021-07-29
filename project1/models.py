@@ -1,10 +1,10 @@
 from django.db import models
 from get_print.models import Customer, Part
-from give_print.models import Supplier, Technology, Material, Colour
+from give_print.models import Supplier, Process, Material, Colour
 from django.core.validators import MaxValueValidator
 
 class PrintSpecification(models.Model):
-    technology = models.ForeignKey(Technology, on_delete=models.CASCADE, blank=True)
+    process = models.ForeignKey(Process, on_delete=models.CASCADE, blank=True)
     material = models.ForeignKey(Material, on_delete=models.CASCADE, blank=True)
     colour = models.ForeignKey(Colour, on_delete=models.CASCADE, blank=True)
     infill = models.PositiveSmallIntegerField(validators=[MaxValueValidator(100)])

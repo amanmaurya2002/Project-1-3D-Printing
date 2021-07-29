@@ -16,7 +16,7 @@ class Material(models.Model):
     def __str__(self):
         return self.name
 
-class Technology(models.Model):
+class Process(models.Model):
     name = models.TextField(max_length=100)
     materials = models.ManyToManyField(Material, related_name='printing_technologies')
 
@@ -26,7 +26,7 @@ class Technology(models.Model):
 class Printer(models.Model):
     make = models.TextField(max_length=100)
     model = models.TextField(max_length=100)
-    printing_technology = models.ForeignKey(Technology, on_delete=models.CASCADE, related_name='printers')
+    printing_technology = models.ForeignKey(Process, on_delete=models.CASCADE, related_name='printers')
 
     def __str__(self):
         return f"{self.make} {self.model}"

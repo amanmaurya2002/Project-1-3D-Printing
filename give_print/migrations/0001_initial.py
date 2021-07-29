@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Technology',
+            name='Process',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.TextField(max_length=100)),
@@ -57,6 +57,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='printer',
             name='prniting_technology',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='printers', to='give_print.technology'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='printers', to='give_print.process'),
         ),
     ]

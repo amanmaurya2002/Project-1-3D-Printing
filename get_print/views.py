@@ -97,3 +97,7 @@ def quotes(request):
 def order_status(request):
     status = 'Order placed!'
     return render(request, 'get_print/order_status.html', {'status': status})
+
+@login_required
+def projects(request):
+    return render('get_print/projects.html')

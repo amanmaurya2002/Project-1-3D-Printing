@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('infill', models.PositiveSmallIntegerField()),
                 ('colour', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='give_print.colour')),
                 ('material', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='give_print.material')),
-                ('technology', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='give_print.technology')),
+                ('process', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='give_print.process')),
             ],
         ),
         migrations.CreateModel(
