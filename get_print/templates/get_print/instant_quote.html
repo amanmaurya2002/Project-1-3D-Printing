@@ -1,5 +1,25 @@
 {% extends 'get_print/base.html' %}
 
+
 {% block body %}
-    
+
+    {% load crispy_forms_tags %}
+
+    <h1>Get Instant Quote</h1>
+
+    <form action="{% url 'get_print:instant_quote' %}">
+        {% csrf_token %}
+
+        <h2>Upload Part</h2>
+        {{ upload_form|crispy }}
+
+        <h2>Print Specifications</h2>
+        {{ print_specification_form|crispy }}
+
+        <h2>Shipping Information</h2>
+        {{ shipping_info_form|crispy }}
+        <br>
+        <input type="submit" value="Find sellers">
+    </form>
+        
 {% endblock %}

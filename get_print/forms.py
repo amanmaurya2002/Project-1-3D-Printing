@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.html import TRAILING_PUNCTUATION_CHARS
 from .models import Part
-from project1.models import PrintSpecification
+from project1.models import PrintSpecification, ShippingInfo
 
 
 # Create your forms here.
@@ -33,4 +33,9 @@ class UploadForm(forms.Form):
 class PrintSpecificationForm(ModelForm):
 	class Meta:
 		model = PrintSpecification
-		fields = ['process', 'material', 'colour', 'infill']
+		fields = ['resolution', 'process', 'material', 'colour', 'additional_info']
+
+class ShippingInfoForm(ModelForm):
+	class Meta:
+		model = ShippingInfo
+		fields = ['first_name', 'last_name', 'email', 'phone', 'address', 'pin_code', 'city']

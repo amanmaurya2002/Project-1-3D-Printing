@@ -16,7 +16,7 @@ urlpatterns = [
     path('upload_part', views.upload_part, name='upload_part'),
     path('orders', views.orders, name='orders'),
     path('quotes', views.quotes, name='quotes'),
-    path('order_status', views.order_status, name='order_status'),
+    path('order-status', views.order_status, name='order_status'),
     path('projects', views.projects, name='projects'), 
-    path('instant_quote', views.instant_quote, 'instant_quote'),
+    path('instant-quote', views.instant_quote, name = 'instant_quote'),
 ]

@@ -151,4 +151,4 @@ MESSAGE_TAGS = {
  }
 
 # Redirects to this url if user is not logged in and is required to be logged in.
-LOGIN_URL = 'login'
+LOGIN_URL = '/login'

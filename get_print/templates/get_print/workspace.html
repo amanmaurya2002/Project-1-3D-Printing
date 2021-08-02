@@ -1,7 +1,8 @@
 {% extends 'get_print/base.html' %}
 
 {% block body %}
-    <h1>Welcome, {{user}}</h1>
+    <h1>Workspace</h1>
+    <h2>Welcome, {{user}}</h2>
     <a href="{% url 'get_print:parts' %}">Parts</a>
     <a href="{% url 'get_print:orders' %}">Orders</a>
 {% endblock %}
