@@ -104,7 +104,6 @@ def projects(request):
     return render('get_print/projects.html')
 
 def instant_quote(request):
-    upload_form = UploadForm()
     specification_form = PrintSpecificationForm()
     shipping_info_form = ShippingInfoForm()
-    return render(request, 'get_print/instant_quote.html', {'upload_form': upload_form, 'specification_form': specification_form, 'shipping_info_form': shipping_info_form})
+    return render(request, 'get_print/instant_quote.html', {'specification_form': specification_form, 'shipping_info_form': shipping_info_form})

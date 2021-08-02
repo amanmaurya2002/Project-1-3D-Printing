@@ -7,19 +7,19 @@
 
     <h1>Get Instant Quote</h1>
 
-    <form action="{% url 'get_print:instant_quote' %}">
+    <form action="{% url 'get_print:instant_quote' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
         <h2>Upload Part</h2>
         {{ upload_form|crispy }}
 
         <h2>Print Specifications</h2>
-        {{ print_specification_form|crispy }}
+        {{ specification_form|crispy }}
 
         <h2>Shipping Information</h2>
         {{ shipping_info_form|crispy }}
         <br>
-        <input type="submit" value="Find sellers">
+        <input type="submit" value="Find suppliers">
     </form>
         
 {% endblock %}

@@ -23,8 +23,8 @@ class PrintSpecification(models.Model):
     process = models.ForeignKey(Process, on_delete=models.PROTECT, blank=True)
     material = models.ForeignKey(Material, on_delete=models.PROTECT, blank=True)
     colour = models.ForeignKey(Colour, on_delete=models.PROTECT, blank=True)
-    additional_info = models.TextField()
-    copies = models.PositiveIntegerField()
+    additional_info = models.TextField(blank=True)
+    copies = models.PositiveIntegerField(default=1)
     buyer = models.ForeignKey(User, on_delete=PROTECT)
 
 class ShippingInfo(models.Model):

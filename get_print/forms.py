@@ -33,7 +33,7 @@ class UploadForm(forms.Form):
 class PrintSpecificationForm(ModelForm):
 	class Meta:
 		model = PrintSpecification
-		fields = ['resolution', 'process', 'material', 'colour', 'additional_info']
+		fields = ['part', 'units', 'resolution', 'process', 'material', 'colour', 'additional_info']
 
 class ShippingInfoForm(ModelForm):
 	class Meta:

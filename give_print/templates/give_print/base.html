@@ -13,44 +13,37 @@
 
   <body>
 
-    {% include 'get_print/includes/messages.html' %}
+    {% include 'give_print/includes/messages.html' %}
 
     <h1>3D Printing</h1>
     <ul>
       <li>
-        <a href="{% url 'give_print:home' %}">Become a supplier</a>
-      </li>
-      <br>
-      <li>
-        <a href="{% url 'get_print:home' %}">Home</a>
+        <a href="{% url 'give_print:home' %}">Home</a>
       </li>
       <li>
-        <a href="{% url 'get_print:about' %}">About Us</a>
+        <a href="{% url 'give_print:about' %}">About Us</a>
       </li>
 
       {% if user.is_authenticated %}
 
         <li>
-          <a href="{% url 'get_print:workspace' %}">Workspace</a>
+          <a href="{% url 'give_print:dashboard' %}">Dashboard</a>
         </li>
 
         <li>
-          <a href="{% url 'get_print:logout' %}">Logout</a>
+          <a href="{% url 'give_print:logout' %}">Logout</a>
         </li>
 
       {% else %}
 
         <li>
-          <a href="{% url 'get_print:register' %}">Register</a>
+          <a href="{% url 'give_print:register' %}">Register</a>
         </li>
         <li>
-          <a href="{% url 'get_print:login' %}">Login</a>
+          <a href="{% url 'give_print:login' %}">Login</a>
         </li>
 
       {% endif %}
-      <li>
-        <a href="{% url 'get_print:instant_quote' %}">Get Instant Quote</a>
-      </li>
     </ul>
     {% block body  %}
 
