@@ -34,9 +34,11 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'project1',
+    'instant_quote',
     'get_print',
     'give_print',
     'crispy_forms',
+    'smart_selects',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -152,3 +154,6 @@ MESSAGE_TAGS = {
 
 # Redirects to this url if user is not logged in and is required to be logged in.
 LOGIN_URL = '/login'
+
+# Used by django-smart-select for cascading dropdowns
+JQUERY_URL = True

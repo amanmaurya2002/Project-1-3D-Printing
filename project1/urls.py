@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , include('get_print.urls')),
     path('supplier/', include('give_print.urls')),
+    path('instant_quote/', include('instant_quote.urls')),
+    path('chaining/', include('smart_selects.urls')),
 ]

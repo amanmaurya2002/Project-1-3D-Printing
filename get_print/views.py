@@ -1,10 +1,9 @@
-from project1.models import ShippingInfo
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .forms import NewUserForm, PartUploadForm, PrintSpecificationForm, ShippingInfoForm, UploadForm
+from .forms import NewUserForm, PartUploadForm, PrintSpecificationForm
 from .models import Part
 from project1.util import find_suppliers
 
@@ -102,8 +101,3 @@ def order_status(request):
 @login_required
 def projects(request):
     return render('get_print/projects.html')
-
-def instant_quote(request):
-    specification_form = PrintSpecificationForm()
-    shipping_info_form = ShippingInfoForm()
-    return render(request, 'get_print/instant_quote.html', {'specification_form': specification_form, 'shipping_info_form': shipping_info_form})

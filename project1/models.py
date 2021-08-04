@@ -17,7 +17,6 @@ class Resolution(models.Model):
         return self.resolution
 
 class PrintSpecification(models.Model):
-    part = models.FileField(upload_to='uploads/instant_quote')
     units = models.ForeignKey(Unit, on_delete=models.PROTECT)
     resolution = models.ForeignKey(Resolution, on_delete=models.PROTECT)
     process = models.ForeignKey(Process, on_delete=models.PROTECT, blank=True)
@@ -25,7 +24,6 @@ class PrintSpecification(models.Model):
     colour = models.ForeignKey(Colour, on_delete=models.PROTECT, blank=True)
     additional_info = models.TextField(blank=True)
     copies = models.PositiveIntegerField(default=1)
-    buyer = models.ForeignKey(User, on_delete=PROTECT)
 
 class ShippingInfo(models.Model):
     first_name = models.CharField(max_length=100)
@@ -35,7 +33,6 @@ class ShippingInfo(models.Model):
     address = models.CharField(max_length=500)
     pin_code = models.PositiveSmallIntegerField()
     city = models.CharField(max_length=100)
-    buyer = models.ForeignKey(User, on_delete=PROTECT)
 
 class Order(models.Model):
     buyer = models.ForeignKey(User, on_delete=PROTECT)
