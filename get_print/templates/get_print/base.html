@@ -6,55 +6,136 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>
       {% block title %} {% endblock %}
-    </title>  
+    </title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+  
+    <!-- Favicons -->
+    <link href="images.png" rel="icon">
+    <link href="images.png" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'get_print/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'get_print/assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'get_print/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'get_print/assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'get_print/assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{% static 'get_print/assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'get_print/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="{% static 'get_print/assets/css/style.css' %}" rel="stylesheet">
+  
   </head>
 
   <body>
 
     {% include 'get_print/includes/messages.html' %}
 
-    <h1>3D Printing</h1>
-    <ul>
-      <li>
-        <a href="{% url 'give_print:home' %}">Become a supplier</a>
-      </li>
-      <br>
-      <li>
-        <a href="{% url 'get_print:home' %}">Home</a>
-      </li>
-      <li>
-        <a href="{% url 'get_print:about' %}">About Us</a>
-      </li>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+      <div class="container d-flex align-items-center justify-content-between">
+  
+        <h1 class="logo"><a href="{% url 'get_print:home' %}">3D<span>PRINTING</span></a></h1>
+        <!-- Uncomment below if an image logo is to be used -->
+        <!--a href="index.html" class="logo"><img src="{% static 'get_print/assets/img/logo.png' %}" alt="" class="img-fluid"></a-->
+  
+        <nav class="nav-menu d-none d-lg-block">
+          <ul>
+            <!--li class="active"><a href="#hero">Home</a></li-->
+            <li><a href="{% url 'get_print:about' %}">About</a></li>
+            <li><a href="{% url 'get_print:materials' %}">Materials</a></li>
+            <li class="drop-down"><a href="{% url 'get_print:technologies' %}">Technology</a>
+              <ul>
+                <li><a href="{% url 'get_print:technologies' %}#fdm">FDM</a></li>
+                <li><a href="{% url 'get_print:technologies' %}#dmls">DMLS</a></li>
+                <li><a href="{% url 'get_print:technologies' %}#mjf">MJF</a></li>
+                <li><a href="{% url 'get_print:technologies' %}#sls">SLS</a></li>
+                <li><a href="{% url 'get_print:technologies' %}#sla">SLA</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'get_print:home' %}#team">Team</a></li>
+            <li><a href="supplier/supplierhome.html">Become a Supplier</a></li>
+            <li><a href="{% url 'get_print:home' %}#contact">Contact</a></li>
+          </ul>
+        </nav><!-- .nav-menu -->
+        <a style="margin-left:20px;" href="inner-page.html" class="get-started-btn scrollto">Get Your Quote</a>
+        <li style="margin-left: 20px;" class="nav-item pl-2 mb-2 mb-md-0 d-md-none d-xl-inline-block">
+          <a href="login/login.html" type="button" class="get-started-btn scrollto">SIGN UP</a>
+        </li>
+      </div>
+    </header><!-- End Header -->  
 
-      {% if user.is_authenticated %}
-
+    <section style="display: none;">
+      <h1>3D Printing</h1>
+      <ul>
         <li>
-          <a href="{% url 'get_print:workspace' %}">Workspace</a>
+          <a href="{% url 'give_print:home' %}">Become a supplier</a>
+        </li>
+        <br>
+        <li>
+          <a href="{% url 'get_print:home' %}">Home</a>
+        </li>
+        <li>
+          <a href="{% url 'get_print:about' %}">About Us</a>
         </li>
 
-        <li>
-          <a href="{% url 'get_print:logout' %}">Logout</a>
-        </li>
+        {% if user.is_authenticated %}
 
-      {% else %}
+          <li>
+            <a href="{% url 'get_print:workspace' %}">Workspace</a>
+          </li>
 
-        <li>
-          <a href="{% url 'get_print:register' %}">Register</a>
-        </li>
-        <li>
-          <a href="{% url 'get_print:login' %}">Login</a>
-        </li>
+          <li>
+            <a href="{% url 'get_print:logout' %}">Logout</a>
+          </li>
 
-      {% endif %}
-      <li>
-        <a href="{% url 'instant_quote:index' %}">Get Instant Quote</a>
-      </li>
-    </ul>
+        {% else %}
+
+          <li>
+            <a href="{% url 'get_print:register' %}">Register</a>
+          </li>
+          <li>
+            <a href="{% url 'get_print:login' %}">Login</a>
+          </li>
+
+        {% endif %}
+        <li>
+          <a href="{% url 'instant_quote:index' %}">Get Instant Quote</a>
+        </li>
+      </ul>
+      </section>
+
+    
     {% block body  %}
 
     {% endblock %}
 
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+    <div id="preloader"></div>
+    
+    <!-- Vendor JS Files -->
+    <script src="{% static 'get_print/assets/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'get_print/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'get_print/assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'get_print/assets/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'get_print/assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'get_print/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'get_print/assets/vendor/venobox/venobox.min.js' %}"></script>
+    <script src="{% static 'get_print/assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'get_print/assets/vendor/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'get_print/assets/vendor/aos/aos.js' %}"></script>
+  
+    <!-- Template Main JS File -->
+    <script src="{% static 'get_print/assets/js/main.js' %}"></script>
+  
   </body>
 </html>

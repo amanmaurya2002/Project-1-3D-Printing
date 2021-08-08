@@ -100,4 +100,10 @@ def order_status(request):
 
 @login_required
 def projects(request):
-    return render('get_print/projects.html')
+    return render(request, 'get_print/projects.html')
+
+def materials(request):
+    return render(request, 'get_print/materials.html')
+
+def technologies(request):
+    return render(request, 'get_print/technologies.html')
