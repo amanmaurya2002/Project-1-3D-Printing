@@ -156,4 +156,4 @@ MESSAGE_TAGS = {
 LOGIN_URL = '/login'
 
 # Used by django-smart-select for cascading dropdowns
-JQUERY_URL = True
+USE_DJANGO_JQUERY = True

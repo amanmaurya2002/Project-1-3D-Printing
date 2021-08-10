@@ -4,6 +4,7 @@ from project1.util import find_suppliers
 
 # Create your views here.
 def index(request):
+    print(request.session[0])
     upload_form = PartUploadForm()
     specification_form = PrintSpecificationForm()
     shipping_info_form = ShippingInfoForm()

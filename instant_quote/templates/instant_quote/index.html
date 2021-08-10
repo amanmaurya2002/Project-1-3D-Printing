@@ -1,38 +1,41 @@
 {% extends 'get_print/base.html' %}
+{% load static %}
 
 
 {% block body %}
 
     {% load crispy_forms_tags %}
 
-    <h1>Get Instant Quote</h1>
-
-    <form action="{% url 'get_print:instant_quote' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-
-        <h2>Upload Part</h2>
-        {{ upload_form|crispy }}
-
-        <h2>Print Specifications</h2>
-        {{ specification_form|crispy }}
-
-        <h2>Shipping Information</h2>
-        {{ shipping_info_form|crispy }}
-        <br>
-        <input type="submit" value="Find suppliers">
-
-        {% if suppliers %}
-            <form action="{% url 'get_print:order_status' %}" method="GET">
-                {% csrf_token %}
-                {% for supplier in suppliers %}
-                    <input type="radio" id='{{supplier.user.id}}' name='quote' value='{{supplier.user.id}}'>
-                    <label for='{{supplier.user.id}}'>{{supplier.user.username}}</label>
-                {% endfor %}
-            </form>
-            <input type="submit" name="Place Order" value="Place Order">
-        {% else %}
-            <h1>No suppliers matched</h1>
-        {% endif %}
-    </form>
+    <div style="margin: 50px 0px 50px 0px; padding: 50px ;">
+        <h1>Get Instant Quote</h1>
+        <form action="{% url 'instant_quote:index' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            <h2>Upload Part</h2>
+            {{ upload_form|crispy }}
+    
+            <h2>Print Specifications</h2>
+            {{ specification_form.media.js }}
+            {{ specification_form|crispy }}
+    
+            <h2>Shipping Information</h2>
+            {{ shipping_info_form|crispy }}
+            <br>
+            <input type="submit" value="Find suppliers">
+    
+            {% if suppliers %}
+                <form action="{% url 'get_print:order_status' %}" method="GET">
+                    {% csrf_token %}
+                    {% for supplier in suppliers %}
+                        <input type="radio" id='{{supplier.user.id}}' name='quote' value='{{supplier.user.id}}'>
+                        <label for='{{supplier.user.id}}'>{{supplier.user.username}}</label>
+                    {% endfor %}
+                </form>
+                <input type="submit" name="Place Order" value="Place Order">
+            {% else %}
+                <h1>No suppliers matched</h1>
+            {% endif %}
+        </form>
+    </div>
         
 {% endblock %}

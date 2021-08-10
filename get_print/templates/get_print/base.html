@@ -33,6 +33,9 @@
   
     <!-- Template Main CSS File -->
     <link href="{% static 'get_print/assets/css/style.css' %}" rel="stylesheet">
+
+    <!-- Template instant_quote CSS File -->
+    <link href="{% static 'instant_quote/style.css' %}" rel="stylesheet">
   
   </head>
 
@@ -67,7 +70,7 @@
             <li><a href="{% url 'get_print:home' %}#contact">Contact</a></li>
           </ul>
         </nav><!-- .nav-menu -->
-        <a style="margin-left:20px;" href="inner-page.html" class="get-started-btn scrollto">Get Your Quote</a>
+        <a style="margin-left:20px;" href="{% url 'instant_quote:index' %}" class="get-started-btn scrollto">Get Your Quote</a>
         <li style="margin-left: 20px;" class="nav-item pl-2 mb-2 mb-md-0 d-md-none d-xl-inline-block">
           <a href="login/login.html" type="button" class="get-started-btn scrollto">SIGN UP</a>
         </li>

@@ -4,6 +4,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -115,6 +116,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 997;
   padding: 15px 0;
   background: rgba(0, 0, 0, 0.8);
+  transition: top 0.3s;
 }
 
 #header .logo {

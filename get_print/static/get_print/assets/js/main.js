@@ -1,9 +1,3 @@
-/**
-* Template Name: Gp - v2.2.1
-* Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 !(function($) {
   "use strict";
 
@@ -15,6 +9,18 @@
       });
     }
   });
+
+  // When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar
+  var prevScrollpos = window.pageYOffset;
+  window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.getElementById("header").style.top = "0";
+    } else {
+      document.getElementById("header").style.top = "-100px";
+    }
+    prevScrollpos = currentScrollPos;
+  }
 
   // Mobile Navigation
   if ($('.nav-menu').length) {
