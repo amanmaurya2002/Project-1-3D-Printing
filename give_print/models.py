@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields import CharField
 
 # Create your models here.
 
@@ -34,8 +35,11 @@ class Printer(models.Model):
 
 class Supplier(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    company_name = models/CharField(max_length=100)
     printers = models.ManyToManyField(Printer, related_name='with_suppliers')
     materials = models.ManyToManyField(Material, related_name='with_suppliers')
+    GSTIN = models.CharField(max_length=15)
+    location = models.CharField(max_length=200)
 
     def __str__(self):
         return self.user.username
